@@ -10,6 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+ *Description:
+ *
+ * Checks for a digit.
+ */
+
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
 
 int	check_argv(int argc, char **argv)
 {
