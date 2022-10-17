@@ -25,7 +25,14 @@ t_list	*ft_lstnew(void *content)
 	res = malloc(sizeof(t_list));
 	if (!res)
 		return (NULL);
-	res->content = NULL;
+	res->value = NULL;
 	res->next = NULL;
 	return (res);
+}
+
+void push(t_list *lst, int new_value)
+{
+	t_list *new;
+	
+	
 }
