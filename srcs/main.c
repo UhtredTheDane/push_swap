@@ -36,7 +36,7 @@ int	ft_isdigit(int c)
 
 int	check_double(int pos, int argc, char **argv)
 {
-	while (i < argc
+	
 }
 
 int	check_argv(int argc, char **argv)
@@ -62,11 +62,24 @@ int	check_argv(int argc, char **argv)
 	}
 	return (1);
 }
+	       
+/*
+ * Description:
+ *
+ * Compare not more than n bytes from the array pointed to by s1 to the array 
+ * pointed to by s2.
+ */
 
+
+	       
 int main(int argc, char **argv)
 {
-	if (argc <= 1 || !check_argv(argc - 1, argv + 1))
+	if (argc <= 1)
+		return (0);
+ 	t_list	*a = ft_lstnew();
+	t_list	*b = ft_lstnew();
+	if (!check_argv(argc - 1, argv + 1))
 		return (0);	
- 	
+	int	*temp = malloc(sizeof(int) * (argc - 1))
 	return (0);
 }
