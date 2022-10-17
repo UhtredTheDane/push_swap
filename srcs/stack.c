@@ -18,7 +18,7 @@
  * The variable previous is initialized to NULL.
  */
 
-t_stack	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*res;
 
