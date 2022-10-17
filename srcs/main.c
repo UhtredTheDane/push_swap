@@ -62,9 +62,6 @@ int main(int argc, char **argv)
 {
 	if (argc <= 1 || !check_argv(argc - 1, argv + 1))
 		return (0);	
- 	t_stack *a = ft_stacknew();
-	t_stack *b = ft_stacknew();
-	if (!a || !b)
-		return (0);
+ 	
 	return (0);
 }
