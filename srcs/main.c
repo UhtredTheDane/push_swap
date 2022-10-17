@@ -19,7 +19,7 @@ size_t	ft_strlen(char	*s)
 
 	size = 0;
 	while (*(s + size))
-		size++;
+		++size;
 	return (size);
 }
 
@@ -32,11 +32,6 @@ size_t	ft_strlen(char	*s)
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
-}
-
-int	check_double(int pos, int argc, char **argv)
-{
-	
 }
 
 int	check_argv(int argc, char **argv)
@@ -56,30 +51,90 @@ int	check_argv(int argc, char **argv)
 		{
 			if (!ft_isdigit(argv[i][j]))
 				return (0);
-			j++;
+			++j;
 		}
-		i++;	
+		++i;	
 	}
 	return (1);
 }
 	       
-/*
+/* 
  * Description:
- *
- * Compare not more than n bytes from the array pointed to by s1 to the array 
- * pointed to by s2.
+ * 
+ * Converts the initial portion of the string pointed to nptr 
+ * to int representation. Remarque: atol ???
  */
 
+int	ft_atoi(const char *nptr)
+{
+	size_t	i;
+	int		negatif;
+	int		res;
 
-	       
+	i = 0;
+	negatif = 0;
+	if (*(nptr + i++) == '-')
+		negatif = 1;
+	res = 0;
+	while (*(nptr + i))
+	{
+		res += *(nptr + i) - '0';
+		++i;
+		if (*(nptr + i))
+			res *= 10;
+	}
+	if (negatif)
+		res *= -1;
+	return (res);
+}    
+
+int	check_double(int argc, int *int_tab)
+{
+	size_t i;
+	size_t j;
+	
+	i = 0;
+	j = 1;
+	while (i < argc - 1)
+	{
+		while (j < argc)
+		{
+			if (int_tab[i] == [int_tab[j])
+				return (0);
+			++j;
+		}
+		++i;
+		j = i + 1;
+	}
+	retrun (1);
+}
+		
+int *sort_tab(int *tab)
+{
+					   
+}
+					   
 int main(int argc, char **argv)
 {
 	if (argc <= 1)
 		return (0);
- 	t_list	*a = ft_lstnew();
-	t_list	*b = ft_lstnew();
 	if (!check_argv(argc - 1, argv + 1))
-		return (0);	
-	int	*temp = malloc(sizeof(int) * (argc - 1))
+		return (0);
+	int *int_tab = malloc(sizeof(int) * (argc - 1));
+	size_t i = 1;
+	while (i < argc)
+	{
+		*(temp + i - 1) = ft_atoi(argv + i);
+		++i;
+	}
+	if (!check_double(argc, int_tab))
+	{
+		free(int_tab);
+		return (0);
+	}
+	
+	
+	t_list	*a = ft_lstnew();
+	t_list	*b = ft_lstnew();
 	return (0);
 }
