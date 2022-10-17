@@ -34,6 +34,11 @@ int	ft_isdigit(int c)
 	return (c >= '0' && c <= '9');
 }
 
+int	check_double(int pos, int argc, char **argv)
+{
+	while (i < argc
+}
+
 int	check_argv(int argc, char **argv)
 {
 	size_t	i;
