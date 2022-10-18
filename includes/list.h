@@ -8,3 +8,10 @@ typedef struct s_list
 	int				cost_b;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_duo
+{
+	int				value;
+	int				index;
+}	t_duo;
+
