@@ -113,18 +113,19 @@ void pre_sort_duo(t_duo *duo, int size)
 {
 	size_t	i;
 	int  j;
-	int	insert_index;
+	int	temp_index;
 	int buffer;
 	
 	i = 1;
 	while (i < size)
 	{
 		j = i - 1;
-		buffer = duo[i]->index;
-		while (j >= 0 && duo[i]->value < duo[j]->value)
+		buffer = duo[i];
+		while (j >= 0 && buffer->value < duo[j]->value)
 		{
-			duo[i]->index = duo[j]->index;
-			duo[j]->index = buffer;
+			temp_index = duo[j]->index;
+			duo[j]->index = buffer->index;
+			buffer->index = temp_index;
 			--j;
 		}
 		++i;
@@ -133,18 +134,17 @@ void pre_sort_duo(t_duo *duo, int size)
 
 int is_sort(t_duo *duo, int size)
 {
-	size_t	i;
-	
+	size_t i;
+
 	i = 0;
 	while (i < size)
 	{
-		if (duo->index != i + 1)
+		if (duo[i]->index != i + 1)
 			return (0);
-		++i;
+		i++;
 	}
 	return (1);
-}
-					   
+}   
 int main(int argc, char **argv)
 {
 	size_t i;
@@ -159,8 +159,8 @@ int main(int argc, char **argv)
 	size_t i = 0;
 	while (i < argc - 1)
 	{
-		int_tab[i]->value = ft_atoi(argv + i + 1);
-		int_tab[i]->index = i + 1;
+		 int_tab[i]->value = ft_atoi(argv + i + 1);
+		 int_tab[i]->index = i + 1;
 		++i;
 	}
 	if (!check_double(argc, int_tab))
@@ -168,18 +168,24 @@ int main(int argc, char **argv)
 		free(int_tab);
 		return (0);
 	}
+
+
 	sort_tab(int_tab);
 	a = ft_lstnew();
 	i = argc - 1;
 	while (i > 0)
-		a = push_front(&a, int_tab, i--);
-	if (!is_sort(duo, argc - 1))
+	{
+		a = push_front(&a, int_tab[i]);
+		--i;
+	}
+	if(!is_sort(duo))
 	{
 		if (argc - 1 == 2)
-			
+			swap_a();
+		
 	}
-		
-		
+
+
 	b = ft_lstnew();
 	
 	

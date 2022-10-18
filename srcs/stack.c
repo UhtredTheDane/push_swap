@@ -34,21 +34,24 @@ t_list	*ft_lstnew(void *content)
 	return (res);
 }
 
-t_list *push_front(t_list **lst, int new_value, int index)
+t_list *push_front(t_list **lst, t_duo *duo)
 {
 	t_list *new;
 	
 	if (lst && *lst)
 	{
 		if(!(*lst)->value)
-			(*lst)->value = new_value;
+		{
+			(*lst)->value = duo->value;
+			(*lst)->index = duo->index;
+		}
 		else
 		{
 			new = malloc(sizeof(t_list));
 			if (!new)
 				return (NULL);
-			new->value = new->value;
-			new->index = index;
+			new->value = duo->value;
+			new->index = duo->index;
 			new->next = *lst;
 			*lst = new;
 		}
@@ -67,6 +70,6 @@ void swap_a(t_list **lst)
 		lst->next = elem->next;
 		elem->next = lst;
 		*lst = elem;
-		
 	}
+	
 }
