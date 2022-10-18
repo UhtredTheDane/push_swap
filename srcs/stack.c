@@ -27,6 +27,10 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	res->value = NULL;
 	res->next = NULL;
+	res->pos = 0;
+	res->target_pos = 0;
+	res->cost_a = 0;
+	res->cost_b = 0;
 	return (res);
 }
 
@@ -36,8 +40,8 @@ t_list *push_front(t_list **lst, int new_value, int index)
 	
 	if (lst && *lst)
 	{
-		if(!*lst->value)
-			*lst->value = new_value;
+		if(!(*lst)->value)
+			(*lst)->value = new_value;
 		else
 		{
 			new = malloc(sizeof(t_list));
