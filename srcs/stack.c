@@ -56,3 +56,17 @@ t_list *push_front(t_list **lst, int new_value, int index)
 	}
 	return (NULL);
 }
+
+void swap_a(t_list **lst)
+{
+	t_list *elem;
+	
+	if (!lst)
+	{
+		elem = lst->next;
+		lst->next = elem->next;
+		elem->next = lst;
+		*lst = elem;
+		
+	}
+}
