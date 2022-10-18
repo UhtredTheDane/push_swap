@@ -30,9 +30,25 @@ t_list	*ft_lstnew(void *content)
 	return (res);
 }
 
-void push(t_list *lst, int new_value)
+t_list *push_front(t_list **lst, int new_value, int index)
 {
 	t_list *new;
 	
-	
+	if (lst && *lst)
+	{
+		if(!*lst->value)
+			*lst->value = new_value;
+		else
+		{
+			new = malloc(sizeof(t_list));
+			if (!new)
+				return (NULL);
+			new->value = new->value;
+			new->index = index;
+			new->next = *lst;
+			*lst = new;
+		}
+		return (*lst);
+	}
+	return (NULL);
 }
