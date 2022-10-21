@@ -6,10 +6,12 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:35 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/15 18:59:38 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/20 20:44:46 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include "../includes/list.h"
  /*
  * Description:
  *
@@ -25,7 +27,7 @@ t_list	*ft_lstnew(void *content)
 	res = malloc(sizeof(t_list));
 	if (!res)
 		return (NULL);
-	res->value = NULL;
+	res->value = 0;
 	res->next = NULL;
 	res->pos = 0;
 	res->target_pos = 0;
@@ -64,12 +66,11 @@ void swap_a(t_list **lst)
 {
 	t_list *elem;
 	
-	if (!lst)
+	if (!lst && !(*lst))
 	{
-		elem = lst->next;
-		lst->next = elem->next;
-		elem->next = lst;
+		elem = (*lst)->next;
+		(*lst)->next = elem->next;
+		elem->next = *lst;
 		*lst = elem;
 	}
-	
 }

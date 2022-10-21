@@ -6,12 +6,12 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/15 19:58:46 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/21 02:50:32 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "../includes/stack.h"
+#include "../includes/list.h"
 
 size_t	ft_strlen(char	*s)
 {
@@ -73,11 +73,15 @@ int	ft_atoi(const char *nptr)
 
 	i = 0;
 	negatif = 0;
-	if (*(nptr + i++) == '-')
+	if (*(nptr + i) == '-')
+	{
+		++i;
 		negatif = 1;
+	}
 	res = 0;
 	while (*(nptr + i))
 	{
+		
 		res += *(nptr + i) - '0';
 		++i;
 		if (*(nptr + i))
@@ -88,25 +92,25 @@ int	ft_atoi(const char *nptr)
 	return (res);
 }    
 
-int	check_double(int argc, int *int_tab)
+int	check_double(int size, t_duo *int_tab)
 {
 	size_t i;
 	size_t j;
 	
 	i = 0;
 	j = 1;
-	while (i < argc - 1)
+	while (i < size - 1)
 	{
-		while (j < argc)
+		while (j < size)
 		{
-			if (int_tab[i] == [int_tab[j])
+			if (int_tab[i].value == int_tab[j].value)
 				return (0);
 			++j;
 		}
 		++i;
 		j = i + 1;
 	}
-	retrun (1);
+	return (1);
 }
 		
 void pre_sort_duo(t_duo *duo, int size)
@@ -114,17 +118,18 @@ void pre_sort_duo(t_duo *duo, int size)
 	size_t	i;
 	int  j;
 	int	temp_index;
-	int buffer;
+	t_duo *buffer;
 	
 	i = 1;
 	while (i < size)
 	{
 		j = i - 1;
-		buffer = duo[i];
-		while (j >= 0 && buffer->value < duo[j]->value)
+		buffer = duo + i;
+		while (j >= 0 && buffer->value < duo[j].value)
 		{
-			temp_index = duo[j]->index;
-			duo[j]->index = buffer->index;
+			temp_index = duo[j].index;
+			duo[j].index = buffer->index;
+			
 			buffer->index = temp_index;
 			--j;
 		}
@@ -139,12 +144,16 @@ int is_sort(t_duo *duo, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (duo[i]->index != i + 1)
+		if (duo[i].index != i + 1)
+		{	
+			
 			return (0);
+		}
 		i++;
 	}
 	return (1);
-}   
+}  
+
 int main(int argc, char **argv)
 {
 	size_t i;
@@ -153,26 +162,33 @@ int main(int argc, char **argv)
 	
 	if (argc <= 1)
 		return (0);
+
 	if (!check_argv(argc - 1, argv + 1))
 		return (0);
 	t_duo *int_tab = malloc(sizeof(t_duo) * (argc - 1));
-	size_t i = 0;
+	i = 0;
 	while (i < argc - 1)
-	{
-		 int_tab[i]->value = ft_atoi(argv + i + 1);
-		 int_tab[i]->index = i + 1;
+	{ 
+		int_tab[i].value = ft_atoi(argv[i + 1]);
+		 int_tab[i].index = i + 1;
 		++i;
 	}
-	if (!check_double(argc, int_tab))
+	if (!check_double(argc - 1, int_tab))
 	{
 		free(int_tab);
 		return (0);
 	}
 
 
-	sort_tab(int_tab);
-	a = ft_lstnew();
+	pre_sort_duo(int_tab, argc - 1);
+	for(int i = 0; i < argc - 1; i++)
+		printf("value duo: %d et index: %d\n", int_tab[i].value, int_tab[i].index);
+	
+	/*a = ft_lstnew();
+	printf("coucou5\n");
+	
 	i = argc - 1;
+	
 	while (i > 0)
 	{
 		a = push_front(&a, int_tab[i]);
@@ -188,6 +204,6 @@ int main(int argc, char **argv)
 
 	b = ft_lstnew();
 	
-	
+	*/
 	return (0);
 }

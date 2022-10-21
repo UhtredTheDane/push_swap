@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stddef.h>
+
 typedef struct s_list
 {
 	int				value;
