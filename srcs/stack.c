@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:35 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/22 00:41:55 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/22 07:36:30 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void rotate_a(t_list **lst)
 
 	if (lst && *lst && ft_lstsize(*lst) > 1)
 	{
-		first_elem = *lst;	
+		first_elem = *lst;
 		elem = first_elem->next;
 		*lst = elem;
 		while (elem->next)
@@ -93,6 +93,7 @@ void rotate_a(t_list **lst)
 		elem->next = first_elem;
 		first_elem->next = NULL;
 	}
+	printf("ra\n");
 }
 
 void reverse_rotate_a(t_list **lst)
@@ -116,13 +117,28 @@ void push_b(t_list **a, t_list **b)
 {
 	t_list *elem;
 	
-	if (a && *a && *b)
+	if (a && *a && b)
 	{
 		elem = *a;
 		*a = elem->next;
 		elem->next = *b;
 		*b = elem;
 	}
+	printf("pb\n");
+}
+
+void push_a(t_list **b, t_list **a)
+{
+	t_list *elem;
+
+	if (b && *b && a)
+	{
+		elem = *b;
+		*b = elem->next;
+		elem->next = *a;
+		*a = elem;
+	}
+	printf("pa\n");
 }
 
 /*
@@ -143,6 +159,7 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (size);
 }
+
 
 void show_list(t_list *lst)
 {

@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/21 23:42:34 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/22 08:10:14 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void rotate_a(t_list **);
 void reverse_rotate_a(t_list **);
 void show_list(t_list *);
 int ft_lstsize(t_list *);
+void push_a(t_list **, t_list **);
+void push_b(t_list **, t_list **);
 
 size_t	ft_strlen(char	*s)
 {
@@ -149,7 +151,7 @@ int is_sort(t_list *lst)
 	i = 0;
 	while (elem)
 	{
-		if (elem->index != i + 1)
+		if (elem->index != i)
 			return (0);
 		++i;
 		elem = elem->next;
@@ -165,6 +167,53 @@ void three_sort(t_list **lst, size_t size)
 		reverse_rotate_a(lst);
 	else if ((*lst)->index > (*lst)->next->index)
 		swap_a(lst);
+}
+/*
+void pre_treatment(t_list **a, t_list **b, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size / 2)
+	{
+		if ((*a)->index <= size / 2)
+		{
+			push_b(a, b);
+			++i;
+		}
+		else
+			rotate_a(a);
+	}
+	while (i < size - 3)
+	{
+		push_b(a, b);
+		++i;
+	}
+}*/
+
+void sort_radix (t_list **a, size_t size)
+{
+	t_list *b;
+	size_t n;
+	size_t	i;
+
+	b = NULL;
+	n = 0;
+	while (!is_sort(*a))
+	{
+		i = 0;
+		while (i < size)
+		{
+			if ((((*a)->index)>>n)&1)
+				rotate_a(a);
+			else
+				push_b(a, &b);
+			i++;
+		}
+		while (b)
+			push_a(&b, a);
+		++n;
+	}
 }
 
 int main(int argc, char **argv)
@@ -184,7 +233,7 @@ int main(int argc, char **argv)
 	while (i < size)
 	{ 
 		int_tab[i].value = ft_atoi(argv[i + 1]);
-		int_tab[i].index = size;
+		int_tab[i].index = size - 1;
 		++i;
 	}
 	if (!check_double(size, int_tab))
@@ -204,13 +253,8 @@ int main(int argc, char **argv)
 		--i;
 	}
 	show_list(a);
-	while(!is_sort(a))
-	{
-		if (size == 2)
-			swap_a(&a);
-		else if (size == 3)
-			three_sort(&a, size);
-	}
+	
+	sort_radix(&a, size);
 	show_list(a);
 	return (0);
 }
