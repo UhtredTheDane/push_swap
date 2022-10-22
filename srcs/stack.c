@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:35 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/22 07:36:30 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/22 08:36:22 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void swap_a(t_list **lst)
 		elem->next = *lst;
 		*lst = elem;
 	}
+	printf("sa\n");
 }
 
 void rotate_a(t_list **lst)
@@ -111,6 +112,7 @@ void reverse_rotate_a(t_list **lst)
 		first_elem->next = *lst;
 		*lst = first_elem;
 	}
+	printf("rra\n");
 }
 
 void push_b(t_list **a, t_list **b)

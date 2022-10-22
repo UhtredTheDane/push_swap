@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/22 08:10:14 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/22 08:45:54 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,37 +159,18 @@ int is_sort(t_list *lst)
 	return (1);
 }  
 
-void three_sort(t_list **lst, size_t size)
+void little_sort(t_list **lst, size_t size)
 {
-	if ((*lst)->index == size)
-	       rotate_a(lst);	
-	else if ((*lst)->next->index == size)
-		reverse_rotate_a(lst);
-	else if ((*lst)->index > (*lst)->next->index)
-		swap_a(lst);
+	while (!is_sort(*lst))
+	{
+		if ((*lst)->index == size)
+	       		rotate_a(lst);	
+		else if ((*lst)->next->index == size)
+			reverse_rotate_a(lst);
+		else if ((*lst)->index > (*lst)->next->index)
+			swap_a(lst);
+	}
 }
-/*
-void pre_treatment(t_list **a, t_list **b, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < size / 2)
-	{
-		if ((*a)->index <= size / 2)
-		{
-			push_b(a, b);
-			++i;
-		}
-		else
-			rotate_a(a);
-	}
-	while (i < size - 3)
-	{
-		push_b(a, b);
-		++i;
-	}
-}*/
 
 void sort_radix (t_list **a, size_t size)
 {
@@ -254,7 +235,10 @@ int main(int argc, char **argv)
 	}
 	show_list(a);
 	
-	sort_radix(&a, size);
+	if (size <= 4)
+		little_sort(&a, size - 1);
+	else	
+		sort_radix(&a, size);
 	show_list(a);
 	return (0);
 }
