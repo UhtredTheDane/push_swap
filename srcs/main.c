@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/22 08:45:54 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/23 19:03:01 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int is_sort(t_list *lst)
 	return (1);
 }  
 
-void little_sort(t_list **lst, size_t size)
+void easy_sort(t_list **lst, size_t size)
 {
 	while (!is_sort(*lst))
 	{
@@ -195,6 +195,69 @@ void sort_radix (t_list **a, size_t size)
 			push_a(&b, a);
 		++n;
 	}
+}
+
+int resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
+{
+	size_t i;
+	t_duo *duo_elem;
+
+	if (position == 5)
+		return (1);
+	if (tab[position] != 0)
+		return resolve_sort(tab, duo, position + 1);
+	i = 1;
+	while (i <= 3)
+	{
+		if (position <= 5)
+		{
+			if (i == 1)
+			{
+				duo_elem = duo[0]
+				duo[0] = duo[1];
+				duo[1] = duo[0]
+			}
+			else if (i == 2)
+			{
+				size_t j = 0;
+				duo_elem = duo[0];
+				while (j < duo_size - 1)
+				{
+					duo[j] = duo[j + 1];
+					++j;
+				}
+				duo[j] = duo_elem;
+			}
+			else
+			{
+				size_t j = duo_size - 1;
+				duo_elem = duo[duo_size - 1];
+				while (j > 0)
+				{
+					duo[j] = duo[j - 1] ;
+					--j;
+				}
+				duo[j] = duo_elem;
+			}
+			
+			tab[position] = i;
+			if (duo_is_sort() || resolve_sort(tab, duo, position + 1, duo_size))
+				return (1);
+		}
+	}
+	deswap duo;
+	tab
+	return (0);
+}
+
+void hard_sort(t_list **a, t_duo *duo, size_t size)
+{
+	int tab[5] = {0};
+
+	//swap a= 1
+	//ra = 2
+	//rra = 3
+	
 }
 
 int main(int argc, char **argv)
@@ -235,10 +298,13 @@ int main(int argc, char **argv)
 	}
 	show_list(a);
 	
-	if (size <= 4)
+	if (size < 4)
 		little_sort(&a, size - 1);
+	else if (size < 5)
+		
 	else	
 		sort_radix(&a, size);
+
 	show_list(a);
 	return (0);
 }
