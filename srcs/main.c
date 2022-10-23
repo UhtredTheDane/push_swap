@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/23 19:03:01 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:00:30 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,20 @@ void pre_sort_duo(t_duo *duo, int size)
 	}
 }
 
+int is_duo_sort(t_duo *duo, size_t duo_size)
+{
+	size_t i;
+
+	i = 0;
+	while (i < duo_size)
+	{
+		if (duo[i].index != i)
+			return (0);
+		++i;
+	}
+	return (1);
+}
+
 int is_sort(t_list *lst)
 {
 	t_list *elem;
@@ -197,56 +211,82 @@ void sort_radix (t_list **a, size_t size)
 	}
 }
 
+void	duo_swap(t_duo *duo, size_t duo_size)
+{
+	t_duo elem;
+
+	if (duo_size >= 2)
+	{
+		elem = duo[0];
+		duo[0] = duo[1];
+		duo[1] = elem;
+	}
+}
+
+void duo_rotate(t_duo *duo, size_t duo_size)
+{
+	t_duo elem;
+	size_t i;
+
+	i = 0;
+	elem = duo[0];
+	while (i < duo_size - 1)
+	{
+		duo[i] = duo[i + 1];
+		++i;
+	}
+	duo[i] = elem;
+}
+
+void duo_reverse_rotate(t_duo *duo, size_t duo_size)
+{
+	t_duo elem;
+	size_t i;
+
+
+	i = duo_size - 1;
+	elem = duo[duo_size - 1];
+	while (i > 0)
+	{
+		duo[i] = duo[i - 1];
+		--i;
+	}
+	duo[i] = elem;
+}
+
 int resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 {
 	size_t i;
 	t_duo *duo_elem;
 
-	if (position == 5)
+	if (is_duo_sort(duo, duo_size))
 		return (1);
 	if (tab[position] != 0)
-		return resolve_sort(tab, duo, position + 1);
+		return resolve_sort(tab, duo, position + 1, duo_size);
 	i = 1;
 	while (i <= 3)
 	{
 		if (position <= 5)
 		{
 			if (i == 1)
-			{
-				duo_elem = duo[0]
-				duo[0] = duo[1];
-				duo[1] = duo[0]
-			}
+				duo_swap(duo, duo_size);
 			else if (i == 2)
-			{
-				size_t j = 0;
-				duo_elem = duo[0];
-				while (j < duo_size - 1)
-				{
-					duo[j] = duo[j + 1];
-					++j;
-				}
-				duo[j] = duo_elem;
-			}
+				duo_rotate(duo, duo_size);	
 			else
-			{
-				size_t j = duo_size - 1;
-				duo_elem = duo[duo_size - 1];
-				while (j > 0)
-				{
-					duo[j] = duo[j - 1] ;
-					--j;
-				}
-				duo[j] = duo_elem;
-			}
-			
+				duo_reverse_rotate(duo, duo_size);
 			tab[position] = i;
-			if (duo_is_sort() || resolve_sort(tab, duo, position + 1, duo_size))
+			if (resolve_sort(tab, duo, position + 1, duo_size))
 				return (1);
+			if (tab[position] == 1)
+				duo_swap(duo, duo_size);
+			else if (tab[position] == 2)
+				duo_reverse_rotate(duo, duo_size);			
+			else
+				duo_rotate(duo, duo_size);
 		}
-	}
-	deswap duo;
-	tab
+		++i;
+	}							
+	tab[position] = 0;
 	return (0);
 }
 
@@ -254,9 +294,9 @@ void hard_sort(t_list **a, t_duo *duo, size_t size)
 {
 	int tab[5] = {0};
 
-	//swap a= 1
-	//ra = 2
-	//rra = 3
+	resolve_sort(tab, duo, 0, size);
+	for (int i = 0; i < 5; i++)
+		printf ("%d\n", tab[i]);
 	
 }
 
@@ -299,9 +339,9 @@ int main(int argc, char **argv)
 	show_list(a);
 	
 	if (size < 4)
-		little_sort(&a, size - 1);
+		easy_sort(&a, size - 1);
 	else if (size < 5)
-		
+		hard_sort(&a, int_tab, size);
 	else	
 		sort_radix(&a, size);
 
