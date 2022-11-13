@@ -13,7 +13,6 @@
 
 #include "../includes/list.h"
 
-int ft_lstsize(t_list *);
  /*
  * Description:
  *
@@ -22,20 +21,17 @@ int ft_lstsize(t_list *);
  * The variable previous is initialized to NULL.
  */
 
-t_list	*ft_lstnew(int content, int index)
+t_stack	*ft_stacknew(int content, int index)
 {
-	t_list	*res;
+	t_stack	*res;
 
-	res = malloc(sizeof(t_list));
+	res = malloc(sizeof(t_stack));
 	if (!res)
 		return (NULL);
 	res->value = content;
 	res->index = index;
 	res->next = NULL;
 	res->pos = 0;
-	res->target_pos = 0;
-	res->cost_a = 0;
-	res->cost_b = 0;
 	return (res);
 }
 
@@ -44,103 +40,13 @@ t_list	*ft_lstnew(int content, int index)
  *
  * Adds the node new at the beginnning of the list.
  */
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_stackadd(t_stack **stack, t_stack *new)
 {
-	if (lst && new)
+	if (stack && new)
 	{
-		new->next = *lst;	
-		*lst = new;
+		new->next = *stack;	
+		*stack = new;
 	}
-}
-
-void	pop_front(t_list **lst)
-{
-	t_list *elem;
-
-	if (*lst && lst)
-	{
-		elem = *lst;
-		*lst = elem->next;
-		free(elem);		
-	}
-}
-
-void swap_a(t_list **lst)
-{
-	t_list *elem;
-	
-	if (lst && *lst)
-	{
-		elem = (*lst)->next;
-		(*lst)->next = elem->next;
-		elem->next = *lst;
-		*lst = elem;
-	}
-	printf("sa\n");
-}
-
-void rotate_a(t_list **lst)
-{
-	t_list *first_elem;
-	t_list *elem;
-
-	if (lst && *lst && ft_lstsize(*lst) > 1)
-	{
-		first_elem = *lst;
-		elem = first_elem->next;
-		*lst = elem;
-		while (elem->next)
-			elem = elem->next;
-		elem->next = first_elem;
-		first_elem->next = NULL;
-	}
-	printf("ra\n");
-}
-
-void reverse_rotate_a(t_list **lst)
-{
-	t_list *first_elem;
-	t_list *elem;
-
-	if (lst && *lst && ft_lstsize(*lst) > 1)
-	{
-		elem = *lst;
-		while (elem->next->next)
-			elem = elem->next;
-		first_elem = elem->next;
-		elem->next = NULL;
-		first_elem->next = *lst;
-		*lst = first_elem;
-	}
-	printf("rra\n");
-}
-
-void push_b(t_list **a, t_list **b)
-{
-	t_list *elem;
-	
-	if (a && *a && b)
-	{
-		elem = *a;
-		*a = elem->next;
-		elem->next = *b;
-		*b = elem;
-	}
-	printf("pb\n");
-}
-
-void push_a(t_list **b, t_list **a)
-{
-	t_list *elem;
-
-	if (b && *b && a)
-	{
-		elem = *b;
-		*b = elem->next;
-		elem->next = *a;
-		*a = elem;
-	}
-	printf("pa\n");
 }
 
 /*
@@ -149,27 +55,41 @@ void push_a(t_list **b, t_list **a)
  * Counts the number of nodes in a list.
  */
 
-int	ft_lstsize(t_list *lst)
+int	ft_stacksize(t_stack *stack)
 {
 	int	size;
 
 	size = 0;
-	while (lst)
+	while (stack)
 	{
 		size++;
-		lst = lst->next;
+		stack = stack->next;
 	}
 	return (size);
 }
 
-
-void show_list(t_list *lst)
+void fill_stack(t_stack *a, t_duo *int_tab)
 {
-	t_list *elem;
+	t_stack *new;
+	int i;
 
-	if (lst)
+	i = size - 1;
+	new = NULL;
+	while (i >= 0)
 	{
-		elem = lst;
+		new = ft_stacknew(int_tab[i].value, int_tab[i].index);
+		ft_stack_add(&a, new);
+		--i;
+	}
+}
+
+void show_stack(t_stack *stack)
+{
+	t_stack *elem;
+
+	if (stack)
+	{
+		elem = stack;
 		while (elem != NULL)
 		{
 			printf("%d ", elem->value);
