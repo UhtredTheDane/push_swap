@@ -6,10 +6,11 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:16:43 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 17:16:45 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:05:58 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
 
 void swap_a(t_stack **stack)
 {
@@ -22,7 +23,7 @@ void swap_a(t_stack **stack)
 		elem->next = *stack;
 		*stack = elem;
 	}
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void rotate_a(t_stack **stack)
@@ -40,7 +41,7 @@ void rotate_a(t_stack **stack)
 		elem->next = first_elem;
 		first_elem->next = NULL;
 	}
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void reverse_rotate_a(t_stack **stack)
@@ -58,7 +59,7 @@ void reverse_rotate_a(t_stack **stack)
 		first_elem->next = *stack;
 		*stack = first_elem;
 	}
-	printf("rra\n");
+	ft_printf("rra\n");
 }
 
 void push_b(t_stack **a, t_stack **b)
@@ -72,7 +73,7 @@ void push_b(t_stack **a, t_stack **b)
 		elem->next = *b;
 		*b = elem;
 	}
-	printf("pb\n");
+	ft_printf("pb\n");
 }
 
 void push_a(t_stack **b, t_stack **a)
@@ -86,5 +87,5 @@ void push_a(t_stack **b, t_stack **a)
 		elem->next = *a;
 		*a = elem;
 	}
-	printf("pa\n");
+	ft_printf("pa\n");
 }

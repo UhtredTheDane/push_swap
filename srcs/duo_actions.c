@@ -6,9 +6,11 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:20:10 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 17:20:12 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:05:20 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/push_swap.h"
 
 int is_duo_sort(t_duo *duo, size_t duo_size)
 {

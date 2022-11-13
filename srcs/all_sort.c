@@ -6,9 +6,11 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:28:36 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 17:28:39 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:16:18 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/push_swap.h"
 
 void easy_sort(t_stack **stack, size_t size)
 {
@@ -51,7 +53,6 @@ void sort_radix (t_stack **a, size_t size)
 int resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 {
 	size_t i;
-	t_duo *duo_elem;
 
 	if (is_duo_sort(duo, duo_size))
 		return (1);
@@ -60,35 +61,39 @@ int resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 	i = 1;
 	while (i <= 3 && position <= 12)
 	{
-		if (make_operation(tab, duo, positionm duo_size))
-			return (1);
+		if (!is_useless(tab, position, i))
+		{
+			choose_operation(duo, duo_size, i);
+			tab[position] = i;
+			if (resolve_sort(tab, duo, position + 1, duo_size))
+				return (1);
+			reverse_operation(tab, duo, position, i);
+		}
 		++i;
 	}							
 	tab[position] = 0;
 	return (0);
 }
 
-int	make_operation(int *tab, t_duo *duo, size_t position, size_t duo_size)
+void reverse_operation(int *tab, t_duo *duo, size_t position, size_t duo_size)
 {
-	if (!is_useless(tab, position, i))
-	{
+	if (tab[position] == 1)
+		duo_swap(duo, duo_size);
+	else if (tab[position] == 2)
+		duo_reverse_rotate(duo, duo_size);
+	else
+		duo_rotate(duo, duo_size);
+}
+
+void choose_operation(t_duo *duo, size_t duo_size, size_t i)
+{
 		if (i == 1)
 			duo_swap(duo, duo_size);
 		else if (i == 2)
 			duo_rotate(duo, duo_size);	
 		else
 			duo_reverse_rotate(duo, duo_size);
-		tab[position] = i;
-		if (resolve_sort(tab, duo, position + 1, duo_size))
-			return (1);
-		if (tab[position] == 1)
-			duo_swap(duo, duo_size);
-		else if (tab[position] == 2)
-			duo_reverse_rotate(duo, duo_size);
-		else
-			duo_rotate(duo, duo_size);
-	}
-	return (0);
+
 }
 
 void hard_sort(t_stack **a, t_duo *duo, size_t size)

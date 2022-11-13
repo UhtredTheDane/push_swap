@@ -6,12 +6,11 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/24 01:02:41 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:18:26 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "../includes/list.h"
+#include "../includes/push_swap.h"
 
 void pre_sort_duo(t_duo *duo, int size)
 {
@@ -102,6 +101,11 @@ int main(int argc, char **argv)
 	if (!int_tab)
 		return (0);
 	fill_duo(int_tab, argv, size);
+	size_t i = 0;
+	while (i < size)
+	{
+		printf("%d, ", int_tab[i].value);
+	}
 	if (check_double(size, int_tab) || is_duo_sort(int_tab, size))
 	{
 		free(int_tab);
@@ -109,8 +113,12 @@ int main(int argc, char **argv)
 	}
 	pre_sort_duo(int_tab, size);	
 	a = NULL;
-	fill_stack(a, int_tab);
+	fill_stack(a, int_tab, size);
+	if (a == NULL)
+		printf("coucou\n");
+	show_stack(a);
 	make_sort(a, int_tab, size);
+	show_stack(a);
 	return (0);
 }
 

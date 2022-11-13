@@ -6,9 +6,11 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:18:28 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 17:18:29 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:07:34 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/push_swap.h"
 
 size_t	ft_strlen(char	*s)
 {

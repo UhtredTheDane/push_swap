@@ -6,12 +6,12 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:35 by agengemb          #+#    #+#             */
-/*   Updated: 2022/10/22 08:36:22 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:17:56 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../includes/list.h"
+#include "../includes/push_swap.h"
 
  /*
  * Description:
@@ -40,7 +40,7 @@ t_stack	*ft_stacknew(int content, int index)
  *
  * Adds the node new at the beginnning of the list.
  */
-void	ft_stackadd(t_stack **stack, t_stack *new)
+void	ft_stack_add(t_stack **stack, t_stack *new)
 {
 	if (stack && new)
 	{
@@ -68,7 +68,7 @@ int	ft_stacksize(t_stack *stack)
 	return (size);
 }
 
-void fill_stack(t_stack *a, t_duo *int_tab)
+void fill_stack(t_stack *a, t_duo *int_tab, size_t size)
 {
 	t_stack *new;
 	int i;
@@ -92,10 +92,10 @@ void show_stack(t_stack *stack)
 		elem = stack;
 		while (elem != NULL)
 		{
-			printf("%d ", elem->value);
+			ft_printf("%d ", elem->value);
 			elem = elem->next;
 		}
-		printf("\n");	
+		ft_printf("\n");	
 	}
 }
 
