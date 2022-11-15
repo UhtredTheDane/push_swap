@@ -6,15 +6,15 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:20:10 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 19:05:20 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:04:53 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int is_duo_sort(t_duo *duo, size_t duo_size)
+int	is_duo_sort(t_duo *duo, size_t duo_size)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < duo_size)
@@ -28,7 +28,7 @@ int is_duo_sort(t_duo *duo, size_t duo_size)
 
 void	duo_swap(t_duo *duo, size_t duo_size)
 {
-	t_duo elem;
+	t_duo	elem;
 
 	if (duo_size >= 2)
 	{
@@ -38,10 +38,10 @@ void	duo_swap(t_duo *duo, size_t duo_size)
 	}
 }
 
-void duo_rotate(t_duo *duo, size_t duo_size)
+void	duo_rotate(t_duo *duo, size_t duo_size)
 {
-	t_duo elem;
-	size_t i;
+	t_duo	elem;
+	size_t	i;
 
 	i = 0;
 	elem = duo[0];
@@ -53,10 +53,10 @@ void duo_rotate(t_duo *duo, size_t duo_size)
 	duo[i] = elem;
 }
 
-void duo_reverse_rotate(t_duo *duo, size_t duo_size)
+void	duo_reverse_rotate(t_duo *duo, size_t duo_size)
 {
-	t_duo elem;
-	size_t i;
+	t_duo	elem;
+	size_t	i;
 
 	i = duo_size - 1;
 	elem = duo[duo_size - 1];
@@ -68,13 +68,13 @@ void duo_reverse_rotate(t_duo *duo, size_t duo_size)
 	duo[i] = elem;
 }
 
-void fill_duo(t_duo *int_tab, char **argv, size_t size)
+void	fill_duo(t_duo *int_tab, char **argv, size_t size)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
 	while (i < size)
-	{ 
+	{
 		int_tab[i].value = ft_atoi(argv[i + 1]);
 		int_tab[i].index = size - 1;
 		++i;

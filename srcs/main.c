@@ -6,13 +6,13 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 19:18:26 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:07:07 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void pre_sort_duo(t_duo *duo, int size)
+void	pre_sort_duo(t_duo *duo, int size)
 {
 	size_t	i;
 	size_t	j;
@@ -31,14 +31,14 @@ void pre_sort_duo(t_duo *duo, int size)
 	}
 }
 
-void make_sort(t_stack *a, t_duo *int_tab, size_t size)
+void	make_sort(t_stack **a, t_duo *int_tab, size_t size)
 {
 	if (size < 4)
-		easy_sort(&a, size - 1);
+		easy_sort(a, size - 1);
 	else if (size <= 5)
-		hard_sort(&a, int_tab, size);
-	else	
-		sort_radix(&a, size);
+		hard_sort(a, int_tab, size);
+	else
+		sort_radix(a, size);
 }
 
 int	check_argv(int argc, char **argv)
@@ -60,16 +60,16 @@ int	check_argv(int argc, char **argv)
 				return (0);
 			++j;
 		}
-		++i;	
+		++i;
 	}
 	return (1);
 }
-	    
+
 int	check_double(int size, t_duo *int_tab)
 {
-	size_t i;
-	size_t j;
-	
+	size_t	i;
+	size_t	j;
+
 	i = 0;
 	j = 1;
 	while (i < size - 1)
@@ -86,11 +86,11 @@ int	check_double(int size, t_duo *int_tab)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	size_t	size;
 	t_stack	*a;
-	t_duo *int_tab;
+	t_duo	*int_tab;
 
 	if (argc <= 1)
 		return (0);
@@ -101,24 +101,14 @@ int main(int argc, char **argv)
 	if (!int_tab)
 		return (0);
 	fill_duo(int_tab, argv, size);
-	size_t i = 0;
-	while (i < size)
-	{
-		printf("%d, ", int_tab[i].value);
-	}
 	if (check_double(size, int_tab) || is_duo_sort(int_tab, size))
 	{
 		free(int_tab);
 		return (0);
 	}
-	pre_sort_duo(int_tab, size);	
+	pre_sort_duo(int_tab, size);
 	a = NULL;
-	fill_stack(a, int_tab, size);
-	if (a == NULL)
-		printf("coucou\n");
-	show_stack(a);
-	make_sort(a, int_tab, size);
-	show_stack(a);
+	fill_stack(&a, int_tab, size);
+	make_sort(&a, int_tab, size);
 	return (0);
 }
-

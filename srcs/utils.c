@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:18:28 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/13 19:07:34 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:12:24 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char	*s)
 {
-	size_t size;
+	size_t	size;
 
 	size = 0;
 	while (*(s + size))
@@ -64,9 +64,9 @@ int	ft_atoi(const char *nptr)
 	if (negatif)
 		res *= -1;
 	return (res);
-}    
+}
 
-int is_useless(int *tab, size_t position, size_t i)
+int	is_useless(int *tab, size_t position, size_t i)
 {
 	if (position > 0)
 	{
@@ -80,9 +80,9 @@ int is_useless(int *tab, size_t position, size_t i)
 	return (0);
 }
 
-int is_sort(t_stack *stack)
+int	is_sort(t_stack *stack)
 {
-	t_stack *elem;
+	t_stack	*elem;
 	size_t	i;
 
 	elem = stack;
