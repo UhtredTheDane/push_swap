@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:07:04 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 16:30:16 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:57:04 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+# include <unistd.h>
 
 typedef struct s_stack
 {
@@ -62,5 +63,7 @@ int		ft_atoi(const char *nptr);
 int		is_useless(int *tab, size_t position, size_t i);
 int		is_sort(t_stack *stack);
 int		ft_printf(const char *format, ...);
+int		check_number(int argc);
+void	write_stderr(void);
 
 #endif
