@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:07:07 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:32:50 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,7 @@ int	main(int argc, char **argv)
 	a = NULL;
 	fill_stack(&a, int_tab, size);
 	make_sort(&a, int_tab, size);
+	free_stack(&a);
+	free(int_tab);
 	return (0);
 }

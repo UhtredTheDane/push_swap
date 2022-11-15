@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:07:04 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:28:23 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:30:16 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_stack	*ft_stacknew(int content, int index);
 void	ft_stack_add(t_stack **stack, t_stack *new);
 int		ft_stacksize(t_stack *stack);
 void	fill_stack(t_stack **a, t_duo *int_tab, size_t size);
-void	show_stack(t_stack *stack);
+void	free_stack(t_stack **stack);
 size_t	ft_strlen(char	*s);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);

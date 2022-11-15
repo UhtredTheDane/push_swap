@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:35 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:11:19 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:30:22 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,14 @@ void	fill_stack(t_stack **a, t_duo *int_tab, size_t size)
 	}
 }
 
-void	show_stack(t_stack *stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*elem;
 
-	if (stack)
+	while (*stack)
 	{
-		elem = stack;
-		while (elem != NULL)
-		{
-			ft_printf("%d ", elem->value);
-			elem = elem->next;
-		}
-		ft_printf("\n");
+		elem = (*stack)->next;
+		free(*stack);
+		*stack = elem;
 	}
 }

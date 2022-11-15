@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:28:36 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:21:52 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:33:47 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	sort_radix(t_stack **a, size_t size)
 			push_a(&b, a);
 		++n;
 	}
+	free_stack(&b);
 }
