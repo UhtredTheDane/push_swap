@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:20:10 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:04:53 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:58:48 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,21 @@ void	duo_reverse_rotate(t_duo *duo, size_t duo_size)
 	duo[i] = elem;
 }
 
-void	fill_duo(t_duo *int_tab, char **argv, size_t size)
+int	fill_duo(t_duo *duo, char **argv, size_t size)
 {
 	size_t	i;
-
+	
 	i = 0;
 	while (i < size)
 	{
-		int_tab[i].value = ft_atoi(argv[i + 1]);
-		int_tab[i].index = size - 1;
+		duo[i].value = ft_atol(argv[i + 1]);
+		if (duo[i].value < INT_MIN || duo[i].value > INT_MAX)
+		{
+			write_stderr();
+			return (0);
+		}
+		duo[i].index = size - 1;
 		++i;
 	}
+	return (1);
 }

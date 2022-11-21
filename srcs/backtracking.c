@@ -6,17 +6,17 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:18:27 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:36:21 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:58:37 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	reverse_operate(int *tab, t_duo *duo, size_t position, size_t duo_size)
+void	reverse_operate(t_duo *duo, size_t duo_size, size_t i)
 {
-	if (tab[position] == 1)
+	if (i == 1)
 		duo_swap(duo, duo_size);
-	else if (tab[position] == 2)
+	else if (i == 2)
 		duo_reverse_rotate(duo, duo_size);
 	else
 		duo_rotate(duo, duo_size);
@@ -69,13 +69,11 @@ void	hard_sort(t_stack **a, t_duo *duo, size_t duo_size)
 int	resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 {
 	size_t	i;
-
+	
 	if (is_duo_sort(duo, duo_size))
 		return (1);
-	if (tab[position] != 0)
-		return (resolve_sort(tab, duo, position + 1, duo_size));
 	i = 1;
-	while (i <= 3 && position <= 12)
+	while (i <= 3 && position < 12)
 	{
 		if (!is_useless(tab, position, i))
 		{
@@ -83,10 +81,10 @@ int	resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 			tab[position] = i;
 			if (resolve_sort(tab, duo, position + 1, duo_size))
 				return (1);
-			reverse_operate(tab, duo, position, i);
+			reverse_operate(duo, duo_size, i);
+			tab[position] = 0;			
 		}
 		++i;
-	}							
-	tab[position] = 0;
+	}
 	return (0);
 }

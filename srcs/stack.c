@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:59:35 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 16:30:22 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/20 21:36:52 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void show_stack(t_stack *stack)
 		elem = stack;
 		while (elem != NULL)
 		{
-			printf("%d ", elem->value);
+			printf("%ld  et index: %d | ", elem->value, elem->index);
 			elem = elem->next;
 		}
 		printf("\n");	
@@ -36,7 +36,7 @@ void show_stack(t_stack *stack)
 * The variable previous is initialized to NULL.
 */
 
-t_stack	*ft_stacknew(int content, int index)
+t_stack	*ft_stacknew(long content, int index)
 {
 	t_stack	*res;
 
@@ -83,7 +83,7 @@ int	ft_stacksize(t_stack *stack)
 	return (size);
 }
 
-void	fill_stack(t_stack **a, t_duo *int_tab, size_t size)
+void	fill_stack(t_stack **a, t_duo *duo, size_t size)
 {
 	t_stack	*new;
 	int		i;
@@ -92,7 +92,7 @@ void	fill_stack(t_stack **a, t_duo *int_tab, size_t size)
 	new = NULL;
 	while (i >= 0)
 	{
-		new = ft_stacknew(int_tab[i].value, int_tab[i].index);
+		new = ft_stacknew(duo[i].value, duo[i].index);
 		ft_stack_add(a, new);
 		--i;
 	}

@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:39:45 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 17:08:19 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:57:05 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	write_stderr(void)
 int	check_number(int argc)
 {
 	if (argc <= 1)
-	{
-		write_stderr();
 		return (0);
-	}
 	return (1);
 }
 
@@ -31,12 +28,14 @@ int	check_argv(int argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
+	size_t	size_number;
 
 	i = 0;
 	while (i < argc)
 	{
 		j = 0;
-		if (!ft_strlen(argv[i]))
+		size_number = ft_strlen(argv[i]);
+		if (!size_number || (size_number == 1 && argv[i][j] == '-'))
 		{
 			write_stderr();
 			return (0);
@@ -57,7 +56,7 @@ int	check_argv(int argc, char **argv)
 	return (1);
 }
 
-int	check_double(int size, t_duo *int_tab)
+int	check_double(int size, t_duo *duo)
 {
 	size_t	i;
 	size_t	j;
@@ -68,7 +67,7 @@ int	check_double(int size, t_duo *int_tab)
 	{
 		while (j < size)
 		{
-			if (int_tab[i].value == int_tab[j].value)
+			if (duo[i].value == duo[j].value)
 			{
 				write_stderr();
 				return (1);

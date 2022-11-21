@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 16:32:50 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:59:21 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	pre_sort_duo(t_duo *duo, int size)
 	}
 }
 
-void	make_sort(t_stack **a, t_duo *int_tab, size_t size)
+void	make_sort(t_stack **a, t_duo *duo, size_t size)
 {
 	if (size < 4)
 		easy_sort(a, size - 1);
 	else if (size <= 5)
-		hard_sort(a, int_tab, size);
+		hard_sort(a, duo, size);
 	else
 		sort_radix(a, size);
 }
@@ -45,28 +45,29 @@ int	main(int argc, char **argv)
 {
 	size_t	size;
 	t_stack	*a;
-	t_duo	*int_tab;
+	t_duo	*duo;
 
 	size = argc - 1;
 	if (!check_number(argc) || !check_argv(size, argv + 1))
 		return (0);
-	int_tab = malloc(sizeof(t_duo) * size);
-	if (!int_tab)
+	duo = malloc(sizeof(t_duo) * size);
+	if (!duo)
+		return (0);
+	if (!fill_duo(duo, argv, size))
 	{
-		write_stderr();
+		free(duo);
 		return (0);
 	}
-	fill_duo(int_tab, argv, size);
-	if (check_double(size, int_tab) || is_duo_sort(int_tab, size))
-	{
-		free(int_tab);
+	pre_sort_duo(duo, size);
+	if (check_double(size, duo) || is_duo_sort(duo, size))
+	{	
+		free(duo);
 		return (0);
 	}
-	pre_sort_duo(int_tab, size);
 	a = NULL;
-	fill_stack(&a, int_tab, size);
-	make_sort(&a, int_tab, size);
+	fill_stack(&a, duo, size);
+	make_sort(&a, duo, size);
 	free_stack(&a);
-	free(int_tab);
+	free(duo);
 	return (0);
 }

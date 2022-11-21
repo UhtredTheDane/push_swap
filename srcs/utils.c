@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:18:28 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/15 15:12:24 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:52:21 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int	ft_isdigit(int c)
  * to int representation. Remarque: atol ???
  */
 
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	size_t	i;
 	int		negatif;
-	int		res;
+	long		res;
 
 	i = 0;
 	negatif = 0;
