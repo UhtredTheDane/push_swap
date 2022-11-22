@@ -66,6 +66,6 @@ int		is_useless(int *tab, size_t position, size_t i);
 int		is_sort(t_stack *stack);
 int		ft_printf(const char *format, ...);
 int		check_number(int argc);
-void	write_stderr(void);
+int		check_size(char **argv);
 
 #endif

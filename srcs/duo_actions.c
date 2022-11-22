@@ -78,7 +78,7 @@ int	fill_duo(t_duo *duo, char **argv, size_t size)
 		duo[i].value = ft_atol(argv[i + 1]);
 		if (duo[i].value < INT_MIN || duo[i].value > INT_MAX)
 		{
-			write_stderr();
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		duo[i].index = size - 1;

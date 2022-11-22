@@ -12,9 +12,17 @@
 
 #include "../includes/push_swap.h"
 
-void	write_stderr(void)
+int	check_size(char **argv)
 {
-	write(2, "Error\n", 6);
+	size_t	size_number;
+
+	size_number = ft_strlen(argv[i]);
+	if (!size_number || (size_number == 1 && argv[i][j] == '-'))
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
+	return (1);
 }
 
 int	check_number(int argc)
@@ -28,26 +36,22 @@ int	check_argv(int argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
-	size_t	size_number;
 
 	i = 0;
 	while (i < argc)
 	{
 		j = 0;
-		size_number = ft_strlen(argv[i]);
-		if (!size_number || (size_number == 1 && argv[i][j] == '-'))
-		{
-			write_stderr();
+		if (!check_size(argv))
 			return (0);
-		}
 		if (argv[i][j] == '-')
 			j = 1;
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j++]))
+			if (!ft_isdigit(argv[i][j]))
 			{
-				write_stderr();
+				write(2, "Error\n", 6);
 				return (0);
+				++j;
 			}
 		}
 		++i;
@@ -68,7 +72,7 @@ int	check_double(t_duo *duo, int size)
 		{
 			if (duo[i].value == duo[j].value)
 			{
-				write_stderr();
+				write(2, "Error\n", 6);
 				return (1);
 			}
 			++j;
