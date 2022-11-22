@@ -12,6 +12,22 @@
 
 #include "../includes/push_swap.h"
 
+void show_stack(t_stack *stack)
+{
+	t_stack *elem;
+
+	if (stack)
+	{
+		elem = stack;
+		while (elem != NULL)
+		{
+			printf("%ld  et index: %d | ", elem->value, elem->index);
+			elem = elem->next;
+		}
+		printf("\n");	
+	}
+}
+
 void	pre_sort_duo(t_duo *duo, int size)
 {
 	size_t	i;
@@ -34,7 +50,7 @@ void	pre_sort_duo(t_duo *duo, int size)
 void	make_sort(t_stack **a, t_duo *duo, size_t size)
 {
 	if (size < 4)
-		easy_sort(a, size - 1);
+		easy_sort(a, size);
 	else if (size <= 5)
 		hard_sort(a, duo, size);
 	else
@@ -59,11 +75,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pre_sort_duo(duo, size);
-	if (check_double(size, duo) || is_duo_sort(duo, size))
-	{	
-		free(duo);
+	if (big_check(duo, size))
 		return (0);
-	}
 	a = NULL;
 	fill_stack(&a, duo, size);
 	make_sort(&a, duo, size);

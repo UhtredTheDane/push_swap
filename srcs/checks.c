@@ -56,7 +56,7 @@ int	check_argv(int argc, char **argv)
 	return (1);
 }
 
-int	check_double(int size, t_duo *duo)
+int	check_double(t_duo *duo, int size)
 {
 	size_t	i;
 	size_t	j;
@@ -78,4 +78,14 @@ int	check_double(int size, t_duo *duo)
 		j = i + 1;
 	}
 	return (0);
+}
+
+int big_check(t_duo *duo, int size)
+{
+	if (check_double(size, duo) || is_duo_sort(duo, size))
+	{	
+		free(duo);
+		return (0);
+	}
+	return (1);
 }

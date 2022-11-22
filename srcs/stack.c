@@ -12,22 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void show_stack(t_stack *stack)
-{
-	t_stack *elem;
-
-	if (stack)
-	{
-		elem = stack;
-		while (elem != NULL)
-		{
-			printf("%ld  et index: %d | ", elem->value, elem->index);
-			elem = elem->next;
-		}
-		printf("\n");	
-	}
-}
-
 /* 
 * Description:
 *

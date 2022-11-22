@@ -16,9 +16,9 @@ void	easy_sort(t_stack **stack, size_t size)
 {
 	while (!is_sort(*stack))
 	{
-		if ((*stack)->index == size)
+		if ((*stack)->index == size - 1)
 			rotate_a(stack);
-		else if ((*stack)->next->index == size)
+		else if ((*stack)->next->index == size - 1)
 			reverse_rotate_a(stack);
 		else if ((*stack)->index > (*stack)->next->index)
 			swap_a(stack);
