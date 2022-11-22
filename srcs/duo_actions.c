@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:20:10 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/21 19:58:48 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:31:52 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	duo_reverse_rotate(t_duo *duo, size_t duo_size)
 int	fill_duo(t_duo *duo, char **argv, size_t size)
 {
 	size_t	i;
-	
+
 	i = 0;
 	while (i < size)
 	{

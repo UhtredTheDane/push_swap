@@ -6,15 +6,15 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/21 19:59:21 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:31:36 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void show_stack(t_stack *stack)
+void	show_stack(t_stack *stack)
 {
-	t_stack *elem;
+	t_stack	*elem;
 
 	if (stack)
 	{
@@ -24,7 +24,7 @@ void show_stack(t_stack *stack)
 			printf("%ld  et index: %d | ", elem->value, elem->index);
 			elem = elem->next;
 		}
-		printf("\n");	
+		printf("\n");
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:18:27 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/21 19:58:37 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:39:16 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	hard_sort(t_stack **a, t_duo *duo, size_t duo_size)
 int	resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 {
 	size_t	i;
-	
+
 	if (is_duo_sort(duo, duo_size))
 		return (1);
 	i = 1;
@@ -82,7 +82,7 @@ int	resolve_sort(int *tab, t_duo *duo, size_t position, size_t duo_size)
 			if (resolve_sort(tab, duo, position + 1, duo_size))
 				return (1);
 			reverse_operate(duo, duo_size, i);
-			tab[position] = 0;			
+			tab[position] = 0;
 		}
 		++i;
 	}

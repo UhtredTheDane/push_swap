@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:18:28 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/17 16:52:21 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:30:43 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ long	ft_atol(const char *nptr)
 {
 	size_t	i;
 	int		negatif;
-	long		res;
+	long	res;
 
 	i = 0;
 	negatif = 0;

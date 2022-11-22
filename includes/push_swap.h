@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:07:04 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/21 19:53:36 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:48:57 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_stack
 {
-	long				value;
+	long			value;
 	int				index;
 	int				pos;
 	struct s_stack	*next;
@@ -29,8 +29,8 @@ typedef struct s_stack
 
 typedef struct s_duo
 {
-	long				value;
-	int				index;
+	long	value;
+	int		index;
 }	t_duo;
 
 void	easy_sort(t_stack **stack, size_t size);
@@ -61,7 +61,7 @@ void	fill_stack(t_stack **a, t_duo *duo, size_t size);
 void	free_stack(t_stack **stack);
 size_t	ft_strlen(char	*s);
 int		ft_isdigit(int c);
-long		ft_atol(const char *nptr);
+long	ft_atol(const char *nptr);
 int		is_useless(int *tab, size_t position, size_t i);
 int		is_sort(t_stack *stack);
 int		ft_printf(const char *format, ...);
