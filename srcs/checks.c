@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:39:45 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/22 17:38:33 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:51:08 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	check_double(t_duo *duo, int size)
 
 int	big_check(t_duo *duo, int size)
 {
-	if (check_double(size, duo) || is_duo_sort(duo, size))
+	if (check_double(duo, size) || is_duo_sort(duo, size))
 	{	
 		free(duo);
 		return (0);

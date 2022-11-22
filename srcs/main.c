@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/22 17:31:36 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:31:35 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pre_sort_duo(duo, size);
-	if (big_check(duo, size))
+	if (!big_check(duo, size))
 		return (0);
 	a = NULL;
 	fill_stack(&a, duo, size);
