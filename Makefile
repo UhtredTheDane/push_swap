@@ -19,10 +19,13 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(LIB)
+$(NAME): $(OBJ) $(LIB)
 	$(CC) $^ -o $@
+	
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(LIB): $(NAME)
+$(LIB):
 	make -C ft_printf
 
 clean:
