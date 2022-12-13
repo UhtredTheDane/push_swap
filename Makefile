@@ -6,7 +6,7 @@
 #    By: agengemb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 17:52:16 by agengemb          #+#    #+#              #
-#    Updated: 2022/11/13 19:36:29 by agengemb         ###   ########.fr        #
+#    Updated: 2022/12/13 04:40:54 by agengemb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ $(NAME): $(OBJ) $(LIB)
 $(LIB):
 	make -C ft_printf
 
-clean:	make -C ft_printf clean
+clean:	
+	make -C ft_printf clean
 	rm -r $(OBJ)
 
 fclean: clean

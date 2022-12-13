@@ -6,18 +6,18 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:39:45 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/22 17:51:08 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/12/13 04:47:26 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_size(char **argv)
+int	check_size(char *number_str)
 {
-	size_t	size_number;
+	int	number_size;
 
-	size_number = ft_strlen(argv[i]);
-	if (!size_number || (size_number == 1 && argv[i][j] == '-'))
+	number_size = ft_strlen(number_str);
+	if (!number_size || (number_size == 1 && number_str[0] == '-'))
 	{
 		write(2, "Error\n", 6);
 		return (0);
@@ -34,14 +34,14 @@ int	check_number(int argc)
 
 int	check_argv(int argc, char **argv)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < argc)
 	{
 		j = 0;
-		if (!check_size(argv))
+		if (!check_size(argv[i]))
 			return (0);
 		if (argv[i][j] == '-')
 			j = 1;
@@ -51,8 +51,8 @@ int	check_argv(int argc, char **argv)
 			{
 				write(2, "Error\n", 6);
 				return (0);
-				++j;
 			}
+			++j;
 		}
 		++i;
 	}
@@ -61,8 +61,8 @@ int	check_argv(int argc, char **argv)
 
 int	check_double(t_duo *duo, int size)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 1;

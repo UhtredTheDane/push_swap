@@ -6,7 +6,7 @@
 /*   By: agengemb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:55:30 by agengemb          #+#    #+#             */
-/*   Updated: 2022/11/22 18:31:35 by agengemb         ###   ########.fr       */
+/*   Updated: 2022/12/13 04:51:13 by agengemb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	show_stack(t_stack *stack)
 		elem = stack;
 		while (elem != NULL)
 		{
-			printf("%ld  et index: %d | ", elem->value, elem->index);
+			printf("%ld  et index: %ld | ", elem->value, elem->index);
 			elem = elem->next;
 		}
 		printf("\n");
@@ -30,8 +30,8 @@ void	show_stack(t_stack *stack)
 
 void	pre_sort_duo(t_duo *duo, int size)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < size)
@@ -59,7 +59,7 @@ void	make_sort(t_stack **a, t_duo *duo, size_t size)
 
 int	main(int argc, char **argv)
 {
-	size_t	size;
+	int		size;
 	t_stack	*a;
 	t_duo	*duo;
 
