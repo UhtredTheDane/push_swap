@@ -6,7 +6,7 @@
 #    By: agengemb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 17:52:16 by agengemb          #+#    #+#              #
-#    Updated: 2022/12/13 04:40:54 by agengemb         ###   ########.fr        #
+#    Updated: 2022/12/13 04:56:45 by agengemb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ $(LIB):
 
 clean:	
 	make -C ft_printf clean
-	rm -r $(OBJ)
+	rm -f $(LIB)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -r $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
