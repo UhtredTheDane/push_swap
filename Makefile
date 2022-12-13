@@ -28,7 +28,7 @@ $(NAME): $(OBJ) $(LIB)
 $(LIB):
 	make -C ft_printf
 
-clean:
+clean:	make -C ft_printf clean
 	rm -r $(OBJ)
 
 fclean: clean
