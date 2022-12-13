@@ -15,6 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 LIB = ./ft_printf/libftprintf.a
 SRC = $(wildcard srcs/*.c)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
